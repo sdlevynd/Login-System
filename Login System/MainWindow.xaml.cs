@@ -50,5 +50,25 @@ namespace Login_System
             }
 
         }
+
+        private void btnRegister_Click(object sender, RoutedEventArgs e)
+        {
+            using var connection = new MySqlConnection(connStr);
+            connection.Open();
+            using var command = new MySqlCommand("INSERT INTO users (username, password) VALUES (@paramUsername, @paramPassword)", connection);
+            command.Parameters.AddWithValue("@paramUsername", txtUsername.Text);
+            command.Parameters.AddWithValue("@paramPassword", txtPassword.Text);
+            command.ExecuteNonQuery();
+        }
+
+        private void btnDelete_Click(object sender, RoutedEventArgs e)
+        {
+            using var connection = new MySqlConnection(connStr);
+            connection.Open();
+            using var command = new MySqlCommand("DELETE FROM users WHERE username = @paramUsername AND password = @paramPassword", connection);
+            command.Parameters.AddWithValue("@paramUsername", txtUsername.Text);
+            command.Parameters.AddWithValue("@paramPassword", txtPassword.Text);
+            command.ExecuteNonQuery();
+        }
     }
 }

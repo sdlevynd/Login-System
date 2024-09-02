@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Login_System"
         mc:Ignorable="d"
-        Title="MainWindow" Height="250" Width="250">
+        Title="MainWindow" Height="300" Width="250">
     <Grid>
         <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
             <Label Name="lblUsername" Content="username" Margin="5"/>
@@ -13,6 +13,8 @@
             <Label Name="lblPassword" Content="password" Margin="5"/>
             <TextBox Name="txtPassword" Margin="5"/>
             <Button Name="btnLogin" Content="Log In" Margin="5" Click="btnLogin_Click"/>
+            <Button Name="btnRegister" Content="Register" Margin="5" Click="btnRegister_Click"/>
+            <Button Name="btnDelete" Content="Delete" Margin="5" Click="btnDelete_Click"/>
 
         </StackPanel>
     </Grid>

@@ -12,5 +12,9 @@ namespace Login_System
         {
             return true;
         }
+        public static int login()
+        {
+            return 0;
+        }
     }
 }
