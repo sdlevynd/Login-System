@@ -1,4 +1,5 @@
-﻿using System;
+﻿
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -34,19 +35,28 @@ namespace Login_System
 
         private void btnLogin_Click(object sender, RoutedEventArgs e)
         {
-            using var connection = new MySqlConnection(connStr);
-            connection.Open();
-            using var command = new MySqlCommand("SELECT userid FROM users WHERE username = @paramUsername AND password = @paramPassword", connection);
-            command.Parameters.AddWithValue("@paramUsername", txtUsername.Text);
-            command.Parameters.AddWithValue("@paramPassword", txtPassword.Text);
-            using var reader = command.ExecuteReader();
-            if (reader.Read())
+            if (Utils.Validate(txtUsername.Text) && Utils.Validate(txtPassword.Text))
             {
-                MessageBox.Show($"User {txtUsername.Text} has ID {reader.GetInt32(0)}");
+
+            
+                using var connection = new MySqlConnection(connStr);
+                connection.Open();
+                using var command = new MySqlCommand("SELECT userid FROM users WHERE username = @paramUsername AND password = @paramPassword", connection);
+                command.Parameters.AddWithValue("@paramUsername", txtUsername.Text);
+                command.Parameters.AddWithValue("@paramPassword", txtPassword.Text);
+                using var reader = command.ExecuteReader();
+                if (reader.Read())
+                {
+                    MessageBox.Show($"User {txtUsername.Text} has ID {reader.GetInt32(0)}");
+                }
+                else
+                {
+                    MessageBox.Show($"User {txtUsername.Text} not found");
+                }
             }
-            else
+            else 
             {
-                MessageBox.Show($"User {txtUsername.Text} not found");
+                MessageBox.Show("textbox was blank");
             }
 
         }
