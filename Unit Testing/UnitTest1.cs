@@ -11,9 +11,14 @@ namespace Unit_Testing
         }
 
         [Test]
-        public void Test1()
+        public void TestValidationNotEmpty()
         {
-            Assert.True(Utils.Validate());
+            Assert.True(Utils.Validate("anything"));
+        }
+        [Test]
+        public void TestValidationEmpty()
+        {
+            Assert.False(Utils.Validate(""));
         }
         [Test]
         public void Test2()
