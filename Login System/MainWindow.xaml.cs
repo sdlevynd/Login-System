@@ -33,10 +33,19 @@ namespace Login_System
 
         private void btnLogin_Click(object sender, RoutedEventArgs e)
         {
+            int userid;
             //validate
             if (Utils.Validate(txtUsername.Text) && Utils.Validate(txtPassword.Text))
             {
-                
+                userid = Utils.login(txtUsername.Text, txtPassword.Text);
+                if (userid != -1)
+                {
+                    MessageBox.Show("Logged In!");
+                }
+                else
+                {
+                    MessageBox.Show("Not Logged In!");
+                }
             }
             else
             {

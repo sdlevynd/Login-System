@@ -21,9 +21,9 @@ namespace Unit_Testing
             Assert.False(Utils.Validate(""));
         }
         [Test]
-        public void Test2()
+        public void TestLoginRealAccount()
         {
-            Assert.That(Utils.login, Is.EqualTo(0));
+            Assert.That(Utils.login("harry","harry"), Is.EqualTo(15));
         }
     }
 }
